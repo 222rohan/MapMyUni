@@ -134,10 +134,10 @@ locationFilter.addEventListener("change", () => {
 });
 
 // Search functionality
-const searchInput = document.getElementById("location-search-input");
+const searchlocationInput = document.getElementById("location-search-input");
 
-searchInput.addEventListener("input", () => {
-    const searchTerm = searchInput.value.toLowerCase();
+searchlocationInput.addEventListener("input", () => {
+    const searchTerm = searchlocationInput.value.toLowerCase();
     
     locationCards.forEach(card => {
         const locationName = card.querySelector(".location-name").textContent.toLowerCase();
@@ -265,3 +265,13 @@ newLocationForm.addEventListener("submit", (e) => {
     newLocationForm.reset();
     locationModal.style.display = "none";
 });
+
+function scrollCards(direction) {
+    const container = document.getElementById('locationCardScroll');
+    const scrollAmount = 300; // Change as needed
+
+    container.scrollBy({
+        left: direction * scrollAmount,
+        behavior: 'smooth'
+    });
+}
