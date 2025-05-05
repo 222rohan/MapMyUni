@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Library - IIITDM Campus</title>
+    <link rel="stylesheet" href="home-styles.css" />
+    <link rel="stylesheet" href="community-styles.css" />
+</head>
+<body>
+    <!-- Sidebar Navigation -->
+    <div class="sidebar">
+        <div class="sidebar-header">
+            <div class="college-logo">
+                <img src="/api/placeholder/40/40" alt="IIITDM Logo" />
+                <div class="college-name">IIITDM Portal</div>
+            </div>
+        </div>
+        <ul class="sidebar-menu">
+            <li><a href="home.html">Home</a></li>
+            <li><a href="community.html">Community Forum</a></li>
+            <li><a href="chatbot.html">Chatbot Assistant</a></li>
+            <li><a href="#">Log Out</a></li>
+        </ul>
+    </div>
+
+    <!-- Main Content Area -->
+    <div class="main-content">
+        <!-- Top Navigation -->
+        <div class="top-nav">
+            <div></div>
+            <div class="user-info">
+                <div class="user-avatar">S</div>
+                <div class="user-name">Student</div>
+            </div>
+        </div>
+
+        <!-- Library Location Page -->
+        <div class="library-location">
+            <h1 class="location-name">Library</h1>
+            <div class="location-info">
+                <div class="location-image">
+                    <img src="./images/sports.jpg" alt="Library" />
+                </div>
+                <p class="location-description">
+                    The central library offers five floors of study spaces, research resources, and meeting rooms.
+                    Open 24/7 during exam periods. A perfect place for quiet study, group discussions, and accessing digital resources.
+                </p>
+            </div>
+            
+            <section class="location-comments">
+                <h3>Student Comments <span class="comment-count">(0)</span></h3>
+                <div class="comments-list">
+                    <!-- Comments will be dynamically added here -->
+                </div>
+
+                <form class="add-comment-form">
+                    <textarea placeholder="Share your experience..." required></textarea>
+                    <button type="submit">Post Comment</button>
+                </form>
+            </section>
+        </div>
+    </div>
+
+    <!-- Modal Styles -->
+    <script src="community-script.js"></script>
+
+    <script>
+        // Handle comment submission
+        const commentForm = document.querySelector(".add-comment-form");
+
+        commentForm.addEventListener("submit", function(e) {
+            e.preventDefault();
+
+            const commentText = commentForm.querySelector("textarea").value;
+            if (!commentText.trim()) return;
+
+            const commentsList = document.querySelector(".comments-list");
+            const commentCount = document.querySelector(".comment-count");
+
+            // Create new comment element
+            const newComment = document.createElement("div");
+            newComment.className = "comment";
+            newComment.innerHTML = `
+                <div class="comment-header">
+                    <span class="commenter">You</span>
+                    <span class="comment-date">Just now</span>
+                </div>
+                <p class="comment-text">${commentText}</p>
+            `;
+
+            // Add to comments list
+            commentsList.appendChild(newComment);
+
+            // Update comment count
+            const currentCount = parseInt(commentCount.textContent.match(/\d+/)[0]);
+            commentCount.textContent = `(${currentCount + 1})`;
+
+            // Clear the form
+            commentForm.querySelector("textarea").value = "";
+        });
+    </script>
+</body>
+</html>

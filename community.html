@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Community Forum - IIITDM Portal</title>
+    <link rel="stylesheet" href="home-styles.css" />
+    <link rel="stylesheet" href="community-styles.css" />
+</head>
+<body>
+    <!-- Sidebar Navigation -->
+    <div class="sidebar">
+        <div class="sidebar-header">
+            <div class="college-logo">
+                <img src="/api/placeholder/40/40" alt="IIITDM Logo" />
+                <div class="college-name">IIITDM Portal</div>
+            </div>
+        </div>
+        <ul class="sidebar-menu">
+            <li><a href="home.html">Home</a></li>
+            <li><a href="#" class="active">Community Forum</a></li>
+            <li><a href="chatbot.html">Chatbot Assistant</a></li>
+            <li><a href="#">Log Out</a></li>
+        </ul>
+    </div>
+
+    <!-- Main Content Area -->
+    <div class="main-content">
+        <!-- Top Navigation -->
+        <div class="top-nav">
+            <div></div>
+            <div class="user-info">
+                <div class="user-avatar">S</div>
+                <div class="user-name">Student</div>
+            </div>
+        </div>
+
+
+        <!-- Forum Section -->
+        <h1 class = "forum-main-heading"> Community Forum </h1>
+        <section class="forum-section">
+            <h1 class="forum-heading">Campus Locations</h1>
+            <p class="locations-subheading">Explore popular places around campus and share your experiences.</p>
+        
+            <div class="carousel-container">
+                <button class="scroll-btn left" onclick="scrollCards(-1)">←</button>
+                        <!-- Location Cards -->
+            <div class="location-cards" id="locationCardScroll">
+                <!-- Location Card 1 -->
+                <div class="location-card" data-category="academic">
+                    <div class="location-image">
+                        <img src="./images/library.jpg" alt="Library" />
+                    </div>
+                    <div class="location-info">
+                        <h2 class="location-name"> Library</h2>
+                        <p class="location-description">The central library offers five floors of study spaces, research resources, and meeting rooms. Open 24/7 during exam periods.</p>
+                        <button class="leave-comment-btn" data-location="Library">Leave a Comment</button>
+                    </div>
+                </div>
+        
+                <!-- Location Card 2 -->
+                <div class="location-card" data-category="dining">
+                    <div class="location-image">
+                        <img src="./images/cafeteria.jpg" alt="Cafeteria" />
+                    </div>
+                    <div class="location-info">
+                        <h2 class="location-name">Cafeteria</h2>
+                        <p class="location-description">Popular meeting spot with a variety of food options, coffee, and comfortable seating. Offers student discounts and weekly specials.</p>
+                        <button class="leave-comment-btn" data-location="Caf">Leave a Comment</button>
+
+                    </div>
+                </div>
+            
+                    <!-- Location Card 3 -->
+                    <div class="location-card" data-category="recreation">
+                        <div class="location-image">
+                            <img src="./images/sports.jpg" alt="Sports Complex" />
+                        </div>
+                        <div class="location-info">
+                            <h2 class="location-name">Sports Complex</h2>
+                            <p class="location-description">State-of-the-art fitness facilities including gym, pool, basketball courts, and various fitness classes. Free for students with ID.</p>
+                            <button class="leave-comment-btn" data-location="Sports">Leave a Comment</button>
+                        </div>
+                    </div>
+            
+                    <!-- Location Card 4 -->
+                    <div class="location-card" data-category="study">
+                        <div class="location-image">
+                            <img src="./images/acads.jpg" alt="Academic Block" />
+                        </div>
+                        <div class="location-info">
+                            <h2 class="location-name">Academic Block</h2>
+                            <p class="location-description">Modern collaborative workspace with tech resources, 3D printers, and presentation areas. Perfect for group projects and innovation.</p>
+                            <button class="leave-comment-btn" data-location="Acads">Leave a Comment</button>
+                            
+                        </div>
+                    </div>
+                </div>
+                <button class="scroll-btn right" onclick="scrollCards(1)">→</button>
+            </div>
+        </section>
+        <section class="forum-section">
+            <h1 class="forum-heading">Whats going on in college?</h1>
+            <p class="forum-subheading">Join discussions, ask questions, and share experiences with fellow students.</p>
+            <!-- Forum Controls -->
+            <div class="forum-controls">
+
+                <!-- Search Box -->
+                <div class="forum-search-box">
+                    <input type="text" placeholder="Search discussions..." id="search-input" />
+                </div>
+
+                <!-- Filter Dropdown -->
+                <div class="forum-filter">
+                    <select id="category-filter">
+                        <option value="">All</option>
+                        <option value="academic">Academic</option>
+                        <option value="hostel">Hostel</option>
+                        <option value="career">Career</option>
+                        <option value="events">Events</option>
+                    </select>
+                </div>
+
+                 <!-- Start New Discussion Button -->
+                <a href="javascript:void(0);" class="create-topic-btn" id="open-modal-btn">Start New Discussion</a>
+            </div>
+
+            <!-- Modal for creating new discussion -->
+            <div id="new-discussion-modal" class="modal">
+                <div class="modal-content">
+                    <span class="close-btn">&times;</span>
+                    <h2>Create New Discussion</h2>
+                    <form id="new-discussion-form">
+                        <label for="topic-title">Title:</label>
+                        <input type="text" id="topic-title" name="title" required>
+                        <label for="topic-category">Category:</label>
+                        <select id="topic-category" name="category">
+                            <option value="academic">Academic</option>
+                            <option value="hostel">Hostel</option>
+                            <option value="career">Career</option>
+                            <option value="events">Events</option>
+                        </select>
+                        <label for="topic-content">Content:</label>
+                        <textarea id="topic-content" name="content" rows="4" required></textarea>
+                        <button type="submit">Create Discussion</button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="forum-topics">
+                <div class="forum-topic">
+                    <span class="topic-category academic">Academic</span>
+                    <h2 class="topic-title">Exam Preparation Tips</h2>
+                    <p class="topic-snippet">Share your strategies and resources for preparing for final exams. What methods work best for different subjects?</p>
+                    <div class="topic-meta">
+                        <span class="posts">23 posts </span>
+                        <span class="latest"> Updated : 2 hours ago</span>
+                    </div>
+                    <a href="#" class="topic-readmore">Join Discussion →</a>
+                </div>
+
+                <div class="forum-topic">
+                    <span class="topic-category hostel">Hostel Life</span>
+                    <h2 class="topic-title">Hostel Life Hacks</h2>
+                    <p class="topic-snippet">From finding good food to organizing your space—what are your hostel life tips? Share your ingenious solutions!</p>
+                    <div class="topic-meta">
+                        <span class="posts">47 posts </span>
+                        <span class="latest"> Updated : Today</span>
+                    </div>
+                    <a href="#" class="topic-readmore">Join Discussion →</a>
+                </div>
+
+                <div class="forum-topic">
+                    <span class="topic-category career">Career</span>
+                    <h2 class="topic-title">Internship Opportunities</h2>
+                    <p class="topic-snippet">Know a company hiring interns? Or need help with applications? This is the place to share opportunities and advice.</p>
+                    <div class="topic-meta">
+                        <span class="posts">32 posts </span>
+                        <span class="latest"> Updated : Yesterday</span>
+                    </div>
+                    <a href="#" class="topic-readmore">Join Discussion →</a>
+                </div>
+
+                <div class="forum-topic">
+                    <span class="topic-category events">Events</span>
+                    <h2 class="topic-title">Upcoming Club Events</h2>
+                    <p class="topic-snippet">Discuss, plan or promote your club's upcoming events here. Find collaborators or participants for campus activities.</p>
+                    <div class="topic-meta">
+                        <span class="posts">15 posts </span>
+                        <span class="latest"> Updated : 3 days ago</span>
+                    </div>
+                    <a href="#" class="topic-readmore">Join Discussion →</a>
+                </div>
+            </div>
+        </section>
+        
+    </div>
+
+    <script src="community-script.js"></script>
+
+</body>
+</html>

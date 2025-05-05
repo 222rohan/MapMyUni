@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IIITDM Portal - Chatbot Assistant</title>
+    <link rel="stylesheet" href="chatbot.css">
+</head>
+<body>
+    <div class="sidebar">
+        <div class="logo-container">
+            <div class="logo"></div>
+            <div class="logo-text">IIITDM Portal</div>
+        </div>
+        <nav class="nav-menu">
+            <a href="home.html" class="nav-item">Home</a>
+            <a href="community.html" class="nav-item">Community Forum</a>
+            <a href="chatbot.html" class="nav-item active">Chatbot Assistant</a>
+            <a href="#" class="nav-item">Log Out</a>
+        </nav>
+    </div>
+    
+    <div class="main-content">
+        <div class="header">
+            <h1 class="page-title">Chatbot Assistant</h1>
+            <div class="user-info">
+                <span>Student</span>
+                <div class="user-avatar">S</div>
+            </div>
+        </div>
+        
+        <div class="content-area">
+            <p class="description">Ask questions about campus, courses, schedules, or get help with common student queries.</p>
+            
+            <div class="chat-container">
+                <div class="chat-header">
+                    <span class="chat-header-title">IIITDM Assistant</span>
+                </div>
+                
+                <div class="chat-messages">
+                    <div class="message bot">
+                        Hello! I'm your IIITDM campus assistant. How can I help you today?
+                    </div>
+                    
+                    <div class="suggestion-chips">
+                        <div class="suggestion-chip">Campus locations</div>
+                        <div class="suggestion-chip">Class schedule</div>
+                        <div class="suggestion-chip">Exam dates</div>
+                        <div class="suggestion-chip">Cafeteria menu</div>
+                    </div>
+                    
+                    <div class="typing-indicator">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                </div>
+                
+                <div class="chat-input-container">
+                    <input type="text" class="chat-input" placeholder="Type your message here...">
+                    <button class="send-button">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                            <path d="M15.964.686a.5.5 0 0 0-.65-.65L.767 5.855H.766l-.452.18a.5.5 0 0 0-.082.887l.41.26.001.002 4.995 3.178 3.178 4.995.002.002.26.41a.5.5 0 0 0 .886-.083l6-15Zm-1.833 1.89L6.637 10.07l-.215-.338a.5.5 0 0 0-.154-.154l-.338-.215 7.494-7.494 1.178-.471-.47 1.178Z"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const chatMessages = document.querySelector('.chat-messages');
+            const chatInput = document.querySelector('.chat-input');
+            const sendButton = document.querySelector('.send-button');
+            const typingIndicator = document.querySelector('.typing-indicator');
+            const suggestionChips = document.querySelectorAll('.suggestion-chip');
+            
+            // Predefined responses for demonstration
+            const responses = {
+                "campus locations": "We have several key locations on campus: Student Center Café, Sports Complex, Library, Academic Blocks, and Hostels. Which one would you like to know more about?",
+                "class schedule": "Your class schedule for today is:\n9:00 AM - Data Structures\n11:00 AM - Computer Networks\n2:00 PM - Design Thinking Lab",
+                "exam dates": "Upcoming exams:\nMid-semester: October 15-22\nEnd-semester: December 10-20\nWould you like to see the detailed exam schedule?",
+                "Cafetaria menu": "Today's cafeteria special menu:\nBreakfast: Idli, Dosa, Poha\nLunch: Vegetable Biryani, Roti, Dal\nDinner: Fried Rice, Manchurian, Ice Cream"
+            };
+            
+            // Send message function
+            function sendMessage(message) {
+                // Create user message
+                const userMessage = document.createElement('div');
+                userMessage.classList.add('message', 'user');
+                userMessage.textContent = message;
+                chatMessages.appendChild(userMessage);
+                
+                // Clear input
+                chatInput.value = '';
+                
+                // Auto scroll to bottom
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+                
+                // Show typing indicator
+                typingIndicator.classList.add('active');
+                
+                // Simulate response delay
+                setTimeout(() => {
+                    typingIndicator.classList.remove('active');
+                    
+                    // Create bot response
+                    const botMessage = document.createElement('div');
+                    botMessage.classList.add('message', 'bot');
+                    
+                    // Check for predefined responses
+                    const key = message.toLowerCase();
+                    const response = responses[key] || "I don't have information about that yet. Is there anything else I can help you with?";
+                    
+                    botMessage.textContent = response;
+                    chatMessages.appendChild(botMessage);
+                    
+                    // Auto scroll to bottom
+                    chatMessages.scrollTop = chatMessages.scrollHeight;
+                }, 1500);
+            }
+            
+            // Send message on button click
+            sendButton.addEventListener('click', () => {
+                const message = chatInput.value.trim();
+                if (message) {
+                    sendMessage(message);
+                }
+            });
+            
+            // Send message on Enter key press
+            chatInput.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') {
+                    const message = chatInput.value.trim();
+                    if (message) {
+                        sendMessage(message);
+                    }
+                }
+            });
+            
+            // Handle suggestion chips
+            suggestionChips.forEach(chip => {
+                chip.addEventListener('click', () => {
+                    sendMessage(chip.textContent);
+                });
+            });
+        });
+    </script>
+</body>
+</html>

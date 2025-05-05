@@ -6,37 +6,39 @@
     <title>IIITDM College Portal</title>
     <link rel="stylesheet" href="home-styles.css" />
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
-    
 </head>
 <body>
     <!-- Sidebar Navigation -->
     <div class="sidebar">
         <div class="sidebar-header">
             <div class="college-logo">
-                <img src="/api/placeholder/40/40" alt="IIITDM Logo" />
+
+                <img src="./images/clg-logo.png" alt="IIITDM Logo" />
                 <div class="college-name">IIITDM Portal</div>
             </div>
         </div>
         <ul class="sidebar-menu">
-            <li><a href="#" class="active">Home</a></li>
-            <li><a href="./community.html">Community Forum</a></li>
-            <li><a href="#">Campus Map</a></li>
-            <li><a href="#">Chatbot Assistant</a></li>
+
+            <li><a href="home.html" class="active">Home</a></li>
+            <li><a href="community.html">Community Forum</a></li>
+            <li><a href="chatbot.html">Chatbot Assistant</a></li>
             <li><a href="#">Log Out</a></li>
         </ul>
     </div>
 
     <!-- Main Content Area -->
     <div class="main-content">
-        <!-- Top Navigation -->
-        <div class="top-nav">
-            <img src="/api/placeholder/40/40" alt="IIITDM Logo" class="website-icon" />
-                <div class="website-name">IIITDM Kancheepuram</div>
+        <div class="welcome-section">
+        <div class="welcome-header">
+            <h1 class="welcome-heading">Welcome to IIITDM Community Portal</h1>
+            <p class="welcome-subheading">Access campus resources, connect with community, and get assistance all in one place.</p>
             <div class="user-info">
                 <div class="user-avatar">S</div>
                 <div class="user-name">Student</div>
             </div>
         </div>
+    </div>
+
 
         <!-- Campus Map Section -->
         <div class="campus-map-section">
@@ -98,28 +100,44 @@
                 <a href="#" class="quick-link" onclick="gotoMarker('Library')">📚 Library</a>
             </div>
         </div>
-
+    </div>     
         <!-- Announcements Section -->
-        <div class="announcements">
-            <h2>Latest Announcements</h2>
-            <div class="announcement-item">
-                <div class="announcement-date">May 4, 2025</div>
-                <div class="announcement-title">Summer Internship Fair - May 15th</div>
-                <div class="announcement-desc">Join us at the Main Auditorium for the annual Summer Internship Fair. Companies from all over the country will be present.</div>
-            </div>
-            <div class="announcement-item">
-                <div class="announcement-date">May 3, 2025</div>
-                <div class="announcement-title">Updated Exam Schedule Released</div>
-                <div class="announcement-desc">The final examination schedule for this semester has been released. Please check your student dashboard.</div>
-            </div>
-            <div class="announcement-item">
-                <div class="announcement-date">May 1, 2025</div>
-                <div class="announcement-title">Library Hours Extended</div>
-                <div class="announcement-desc">Library hours have been extended until midnight during the exam period starting next week.</div>
-            </div>
-        </div>
-    </div>
-
+        <section class="announcements">
+            <h2 class="announcements-heading">Latest Announcements</h2>
+        
+            <article class="announcement-item">
+                <header>
+                    <time class="announcement-date" datetime="2025-05-04">May 4, 2025</time>
+                    <h3 class="announcement-title">Summer Internship Fair – May 15</h3>
+                </header>
+                <p class="announcement-desc">
+                    Attend the annual Summer Internship Fair in the Main Auditorium. Leading companies from across the country will be present to offer internship opportunities.
+                </p>
+                <button class="read-more-btn">Read More →</button>
+            </article>
+        
+            <article class="announcement-item">
+                <header>
+                    <time class="announcement-date" datetime="2025-05-03">May 3, 2025</time>
+                    <h3 class="announcement-title">Updated Exam Schedule Released</h3>
+                </header>
+                <p class="announcement-desc">
+                    The final examination schedule for the current semester is now available. Please review it on your student dashboard to stay informed.
+                </p>
+                <button class="read-more-btn">Read More →</button>
+            </article>
+        
+            <article class="announcement-item">
+                <header>
+                    <time class="announcement-date" datetime="2025-05-01">May 1, 2025</time>
+                    <h3 class="announcement-title">Extended Library Hours</h3>
+                </header>
+                <p class="announcement-desc">
+                    In preparation for exams, the library will remain open until midnight starting next week. Make the most of the extended study hours.
+                </p>
+                <button class="read-more-btn">Read More →</button>
+            </article>
+        </section>
     <!-- Login Overlay -->
     <div class="login-overlay" style="display: none;">
         <div class="login-container">
