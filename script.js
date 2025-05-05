@@ -237,8 +237,8 @@ const createModalContainer = () => {
     modalContainer.style.display = 'none';
     modalContainer.style.position = 'absolute';
     modalContainer.style.top = '0';
-    modalContainer.style.left = '0';
-    modalContainer.style.right = '0';
+    modalContainer.style.width = '40%';
+    modalContainer.style.right = 'auto'; // override the full-width setting
     modalContainer.style.bottom = '0';
     modalContainer.style.backgroundColor = 'rgba(255, 255, 255, 0.95)';
     modalContainer.style.zIndex = '1000';
@@ -253,20 +253,40 @@ const createModalContainer = () => {
 // Create and append modal container
 const modalContainer = createModalContainer();
 
-// Create a marker for each point
+const redIcon = L.icon({
+    iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-red.png',
+    shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-shadow.png',
+    iconSize: [25, 41],
+    iconAnchor: [12, 41]
+});
+
+const defaultIcon = L.icon({
+    iconUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-icon.png',
+    shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-shadow.png',
+    iconSize: [25, 41],
+    iconAnchor: [12, 41]
+});
+
+let activeMarker = null;
+
 points.forEach(point => {
-    const marker = L.marker([point.lat, point.lng]).addTo(map);
-    
-    // Add tooltip with name
+    const marker = L.marker([point.lat, point.lng], { icon: defaultIcon }).addTo(map);
+
     marker.bindTooltip(point.name);
-    
-    // Add click handler to show modal
-    marker.on('click', function() {
+
+    marker.on('click', function(e) {
+        if (activeMarker && activeMarker !== marker) {
+            activeMarker.setIcon(defaultIcon);
+        }
+
+        marker.setIcon(redIcon);
+        activeMarker = marker;
+
         showPointModal(point);
-        // Stop the click event from propagating to the map
-        L.DomEvent.stopPropagation;
+        L.DomEvent.stopPropagation(e);
     });
 });
+
 
 // Format date to a more readable format
 function formatDate(dateStr) {
@@ -448,3 +468,4 @@ document.addEventListener('keydown', function(e) {
 modalContainer.addEventListener('wheel', function(e) {
     e.stopPropagation();
 });
+

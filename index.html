@@ -29,17 +29,12 @@
     <div class="main-content">
         <!-- Top Navigation -->
         <div class="top-nav">
-            <div></div>
+            <img src="/api/placeholder/40/40" alt="IIITDM Logo" class="website-icon" />
+                <div class="website-name">IIITDM Kancheepuram</div>
             <div class="user-info">
                 <div class="user-avatar">S</div>
                 <div class="user-name">Student</div>
             </div>
-        </div>
-
-        <!-- Welcome Section -->
-        <div class="welcome-section">
-            <h1 class="welcome-heading">Welcome to IIITDM College Portal</h1>
-            <p class="welcome-subheading">Access campus resources, connect with community, and get assistance all in one place.</p>
         </div>
 
         <!-- Campus Map Section -->
@@ -88,6 +83,11 @@
                         </div>
                     </div>
                 </div>
+                <div id="sidebar" class="map-sidebar">
+                    <button onclick="closeSidebar()" style="position:absolute;top:10px;right:10px;font-size:20px;">×</button>
+                    <div class="sidebar-content" id="sidebar-content"></div>
+                  </div>
+                  
             </div>
             <div class="quick-links">
                 <a href="#" class="quick-link" onclick="gotoMarker('Admin Building')">🏢 Admin</a>
