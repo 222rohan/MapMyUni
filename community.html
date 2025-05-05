@@ -38,12 +38,11 @@
 
 
         <!-- Forum Section -->
+        <h1 class = "forum-main-heading"> Community Forum </h1>
         <section class="forum-section">
             <h1 class="forum-heading">Campus Locations</h1>
             <p class="locations-subheading">Explore popular places around campus and share your experiences.</p>
         
-            
-
             <div class="carousel-container">
                 <button class="scroll-btn left" onclick="scrollCards(-1)">←</button>
                         <!-- Location Cards -->
@@ -51,22 +50,24 @@
                 <!-- Location Card 1 -->
                 <div class="location-card" data-category="academic">
                     <div class="location-image">
-                        <img src="./images/library.jpg" alt="University Library" />
+                        <img src="./images/library.jpg" alt="Library" />
                     </div>
                     <div class="location-info">
-                        <h2 class="location-name">University Library</h2>
+                        <h2 class="location-name"> Library</h2>
                         <p class="location-description">The central library offers five floors of study spaces, research resources, and meeting rooms. Open 24/7 during exam periods.</p>
+                        <button class="leave-comment-btn" data-location="Library">Leave a Comment</button>
                     </div>
                 </div>
         
                 <!-- Location Card 2 -->
                 <div class="location-card" data-category="dining">
                     <div class="location-image">
-                        <img src="./images/cafeteria.jpg" alt="Student Center Café" />
+                        <img src="./images/cafeteria.jpg" alt="Cafeteria" />
                     </div>
                     <div class="location-info">
-                        <h2 class="location-name">Student Center Café</h2>
+                        <h2 class="location-name">Cafeteria</h2>
                         <p class="location-description">Popular meeting spot with a variety of food options, coffee, and comfortable seating. Offers student discounts and weekly specials.</p>
+                        <button class="leave-comment-btn" data-location="Caf">Leave a Comment</button>
 
                     </div>
                 </div>
@@ -74,34 +75,33 @@
                     <!-- Location Card 3 -->
                     <div class="location-card" data-category="recreation">
                         <div class="location-image">
-                            <img src="./images/recreation-center.jpg" alt="Recreation Center" />
+                            <img src="./images/recreation-center.jpg" alt="Sports Complex" />
                         </div>
                         <div class="location-info">
-                            <h2 class="location-name">Recreation Center</h2>
+                            <h2 class="location-name">Sports Complex</h2>
                             <p class="location-description">State-of-the-art fitness facilities including gym, pool, basketball courts, and various fitness classes. Free for students with ID.</p>
+                            <button class="leave-comment-btn" data-location="Sports">Leave a Comment</button>
                         </div>
                     </div>
             
                     <!-- Location Card 4 -->
                     <div class="location-card" data-category="study">
                         <div class="location-image">
-                            <img src="./images/innovation hub.jpg" alt="Innovation Hub" />
+                            <img src="./images/innovation hub.jpg" alt="Academic Block" />
                         </div>
                         <div class="location-info">
-                            <h2 class="location-name">Innovation Hub</h2>
+                            <h2 class="location-name">Academic Block</h2>
                             <p class="location-description">Modern collaborative workspace with tech resources, 3D printers, and presentation areas. Perfect for group projects and innovation.</p>
+                            <button class="leave-comment-btn" data-location="Acads">Leave a Comment</button>
                             
                         </div>
                     </div>
                 </div>
                 <button class="scroll-btn right" onclick="scrollCards(1)">→</button>
             </div>
-            <!-- Load More Button -->
-            <div class="load-more-container">
-                <button id="load-more-locations" class="load-more-btn">Load More Locations</button>
-            </div>
-
-            <h1 class="forum-heading">Community Forum</h1>
+        </section>
+        <section class="forum-section">
+            <h1 class="forum-heading">Whats going on in college?</h1>
             <p class="forum-subheading">Join discussions, ask questions, and share experiences with fellow students.</p>
             <!-- Forum Controls -->
             <div class="forum-controls">

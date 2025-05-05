@@ -1,3 +1,14 @@
+const leaveCommentBtns = document.querySelectorAll('.leave-comment-btn');
+
+leaveCommentBtns.forEach(btn => {
+    btn.addEventListener('click', (e) => {
+        const locationName = e.target.getAttribute('data-location'); // Get the location from the button's data-location attribute
+        
+        // Redirect to the appropriate location's comments page
+        window.location.href = `location-${locationName.toLowerCase()}.html?location=${encodeURIComponent(locationName)}`;
+    });
+});
+
 document.getElementById('search-input').addEventListener('input', function() {
     let searchTerm = this.value.toLowerCase();
     let topics = document.querySelectorAll('.forum-topic');
@@ -97,174 +108,6 @@ form.addEventListener('submit', function(event) {
 function clearForm() {
     document.getElementById('new-discussion-form').reset();
 }
-
-// Modal functionality
-const locationModal = document.getElementById("new-location-modal");
-const openLocationModalBtn = document.getElementById("open-location-modal-btn");
-const closeLocationModalBtn = document.querySelector("#new-location-modal .close-btn");
-
-openLocationModalBtn.addEventListener("click", () => {
-    locationModal.style.display = "block";
-});
-
-closeLocationModalBtn.addEventListener("click", () => {
-    locationModal.style.display = "none";
-});
-
-window.addEventListener("click", (event) => {
-    if (event.target == locationModal) {
-        locationModal.style.display = "none";
-    }
-});
-
-// Filter functionality
-const locationFilter = document.getElementById("location-filter");
-const locationCards = document.querySelectorAll(".location-card");
-
-locationFilter.addEventListener("change", () => {
-    const filterValue = locationFilter.value;
-    
-    locationCards.forEach(card => {
-        if (filterValue === "all" || card.dataset.category === filterValue) {
-            card.style.display = "flex";
-        } else {
-            card.style.display = "none";
-        }
-    });
-});
-
-// Search functionality
-const searchlocationInput = document.getElementById("location-search-input");
-
-searchlocationInput.addEventListener("input", () => {
-    const searchTerm = searchlocationInput.value.toLowerCase();
-    
-    locationCards.forEach(card => {
-        const locationName = card.querySelector(".location-name").textContent.toLowerCase();
-        const locationDescription = card.querySelector(".location-description").textContent.toLowerCase();
-        
-        if (locationName.includes(searchTerm) || locationDescription.includes(searchTerm)) {
-            card.style.display = "flex";
-        } else {
-            card.style.display = "none";
-        }
-    });
-});
-
-// Comment form submission
-const commentForms = document.querySelectorAll(".add-comment-form");
-
-commentForms.forEach(form => {
-    form.addEventListener("submit", (e) => {
-        e.preventDefault();
-        
-        const commentText = form.querySelector("textarea").value;
-        if (!commentText.trim()) return;
-        
-        const commentsList = form.closest(".location-comments").querySelector(".comments-list");
-        const commentCount = form.closest(".location-comments").querySelector(".comment-count");
-        
-        // Create new comment element
-        const newComment = document.createElement("div");
-        newComment.className = "comment";
-        newComment.innerHTML = `
-            <div class="comment-header">
-                <span class="commenter">You</span>
-                <span class="comment-date">Just now</span>
-            </div>
-            <p class="comment-text">${commentText}</p>
-        `;
-        
-        // Add to comments list
-        commentsList.appendChild(newComment);
-        
-        // Update comment count
-        const currentCount = parseInt(commentCount.textContent.match(/\d+/)[0]);
-        commentCount.textContent = `(${currentCount + 1})`;
-        
-        // Clear the form
-        form.querySelector("textarea").value = "";
-    });
-});
-
-// New location form submission
-const newLocationForm = document.getElementById("new-location-form");
-
-newLocationForm.addEventListener("submit", (e) => {
-    e.preventDefault();
-    
-    const locationName = document.getElementById("location-name").value;
-    const locationCategory = document.getElementById("location-category").value;
-    const locationDescription = document.getElementById("location-description").value;
-    
-    // Create new location card
-    const newLocationCard = document.createElement("div");
-    newLocationCard.className = "location-card";
-    newLocationCard.dataset.category = locationCategory;
-    newLocationCard.innerHTML = `
-        <div class="location-image">
-            <img src="/api/placeholder/400/250" alt="${locationName}" />
-        </div>
-        <div class="location-info">
-            <span class="location-category ${locationCategory}">${locationCategory.charAt(0).toUpperCase() + locationCategory.slice(1)}</span>
-            <h2 class="location-name">${locationName}</h2>
-            <p class="location-description">${locationDescription}</p>
-            
-            <div class="location-comments">
-                <h3>Student Comments <span class="comment-count">(0)</span></h3>
-                
-                <div class="comments-list">
-                    <!-- No comments yet -->
-                </div>
-                
-                <form class="add-comment-form">
-                    <textarea placeholder="Share your experience..." required></textarea>
-                    <button type="submit">Post Comment</button>
-                </form>
-            </div>
-        </div>
-    `;
-    
-    // Add event listener to the new comment form
-    const newCommentForm = newLocationCard.querySelector(".add-comment-form");
-    newCommentForm.addEventListener("submit", (e) => {
-        e.preventDefault();
-        
-        const commentText = newCommentForm.querySelector("textarea").value;
-        if (!commentText.trim()) return;
-        
-        const commentsList = newCommentForm.closest(".location-comments").querySelector(".comments-list");
-        const commentCount = newCommentForm.closest(".location-comments").querySelector(".comment-count");
-        
-        // Create new comment element
-        const newComment = document.createElement("div");
-        newComment.className = "comment";
-        newComment.innerHTML = `
-            <div class="comment-header">
-                <span class="commenter">You</span>
-                <span class="comment-date">Just now</span>
-            </div>
-            <p class="comment-text">${commentText}</p>
-        `;
-        
-        // Add to comments list
-        commentsList.appendChild(newComment);
-        
-        // Update comment count
-        const currentCount = parseInt(commentCount.textContent.match(/\d+/)[0]);
-        commentCount.textContent = `(${currentCount + 1})`;
-        
-        // Clear the form
-        newCommentForm.querySelector("textarea").value = "";
-    });
-    
-    // Add new location to the list
-    document.querySelector(".location-cards").appendChild(newLocationCard);
-    
-    // Clear the form and close modal
-    newLocationForm.reset();
-    locationModal.style.display = "none";
-});
 
 function scrollCards(direction) {
     const container = document.getElementById('locationCardScroll');
