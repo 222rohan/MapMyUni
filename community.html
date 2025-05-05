@@ -4,7 +4,346 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Community Forum - IIITDM Portal</title>
-    <link rel="stylesheet" href="community-styles.css" />
+    <style>
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            display: flex;
+            background-color: #f5f7fa;
+            color: #333;
+            height: 100vh;
+        }
+
+        /* Sidebar Navigation */
+        .sidebar {
+            width: 240px;
+            background-color: #1a3a5f;
+            color: #fff;
+            padding: 20px 0;
+            height: 100vh;
+            position: fixed;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .sidebar-header {
+            padding: 0 20px 20px;
+            border-bottom: 1px solid #2c4c6e;
+        }
+
+        .college-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 5px;
+        }
+
+        .college-logo img {
+            width: 40px;
+            height: 40px;
+            background-color: #fff;
+            border-radius: 50%;
+        }
+
+        .college-name {
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        .sidebar-menu {
+            padding: 20px;
+            list-style: none;
+        }
+
+        .sidebar-menu li {
+            margin-bottom: 15px;
+        }
+
+        .sidebar-menu a {
+            color: #e0e0e0;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            padding: 8px 10px;
+            border-radius: 5px;
+            transition: all 0.2s;
+        }
+
+        .sidebar-menu a:hover, .sidebar-menu a.active {
+            background-color: #2c4c6e;
+            color: #fff;
+        }
+
+        .sidebar-menu a span {
+            margin-left: 10px;
+        }
+
+        /* Main Content Area */
+        .main-content {
+            flex-grow: 1;
+            margin-left: 240px;
+            padding: 20px;
+            overflow-y: auto;
+        }
+
+        /* Top Navigation */
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #fff;
+            padding: 10px 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+            margin-bottom: 20px;
+        }
+
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .user-avatar {
+            width: 35px;
+            height: 35px;
+            background-color: #1a3a5f;
+            border-radius: 50%;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        .user-name {
+            font-weight: 500;
+        }
+
+        /* Enhanced Forum Section Styles */
+        .forum-section {
+            background-color: #fff;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            margin-bottom: 30px;
+        }
+
+        .forum-heading {
+            font-size: 28px;
+            font-weight: 700;
+            color: #1a3a5f;
+            margin-bottom: 10px;
+            position: relative;
+            padding-bottom: 12px;
+        }
+
+        .forum-heading:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background-color: #1a3a5f;
+        }
+
+        .forum-subheading {
+            font-size: 16px;
+            color: #555;
+            margin-bottom: 30px;
+        }
+
+        /* Forum Controls */
+        .forum-controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+
+        .forum-search-box {
+            position: relative;
+            width: 300px;
+        }
+
+        .forum-search-box input {
+            width: 100%;
+            padding: 10px 40px 10px 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 14px;
+            transition: all 0.2s;
+        }
+
+        .forum-search-box input:focus {
+            border-color: #1a3a5f;
+            box-shadow: 0 0 0 3px rgba(26, 58, 95, 0.2);
+            outline: none;
+        }
+
+        .forum-search-box::after {
+            content: "🔍";
+            position: absolute;
+            right: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #777;
+        }
+
+        .create-topic-btn {
+            display: block;
+            background-color: #1a3a5f;
+            color: white;
+            text-decoration: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-size: 15px;
+            font-weight: 600;
+            transition: all 0.2s ease;
+            box-shadow: 0 4px 6px rgba(26, 58, 95, 0.2);
+        }
+
+        .create-topic-btn:hover {
+            background-color: #2c4c6e;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(26, 58, 95, 0.3);
+        }
+
+        /* Forum Topics Grid Layout */
+        .forum-topics {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 24px;
+            margin-top: 25px;
+        }
+
+        .forum-topic {
+            background-color: #f8fafc;
+            border-radius: 10px;
+            padding: 22px;
+            transition: all 0.3s ease;
+            border-left: 4px solid #1a3a5f;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .forum-topic:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+        }
+
+        .topic-category {
+            display: inline-block;
+            font-size: 12px;
+            background-color: #e0eaff;
+            color: #1a3a5f;
+            padding: 4px 10px;
+            border-radius: 20px;
+            margin-bottom: 10px;
+            font-weight: 500;
+        }
+
+        .topic-category.academic {
+            background-color: #e0eaff;
+            color: #1a3a5f;
+        }
+
+        .topic-category.hostel {
+            background-color: #e0ffea;
+            color: #0a5f29;
+        }
+
+        .topic-category.career {
+            background-color: #ffe0e0;
+            color: #5f1a1a;
+        }
+
+        .topic-category.events {
+            background-color: #fff6e0;
+            color: #5f4c1a;
+        }
+
+        .topic-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #1a3a5f;
+            margin-bottom: 12px;
+        }
+
+        .topic-snippet {
+            color: #555;
+            font-size: 14px;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+
+        .topic-meta {
+            display: flex;
+            align-items: center;
+            margin-top: auto;
+            margin-bottom: 15px;
+            color: #666;
+            font-size: 13px;
+        }
+
+        .topic-meta .posts {
+            margin-right: 15px;
+        }
+
+        .topic-meta .latest {
+            flex-grow: 1;
+            text-align: right;
+        }
+
+        .topic-readmore {
+            display: inline-block;
+            background-color: #1a3a5f;
+            color: white;
+            text-decoration: none;
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 500;
+            transition: background-color 0.2s ease;
+            text-align: center;
+        }
+
+        .topic-readmore:hover {
+            background-color: #2c4c6e;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .forum-topics {
+                grid-template-columns: 1fr;
+            }
+            
+            .forum-controls {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 15px;
+            }
+            
+            .forum-search-box {
+                width: 100%;
+            }
+            
+            .create-topic-btn {
+                width: 100%;
+                text-align: center;
+            }
+        }
+    </style>
 </head>
 <body>
     <!-- Sidebar Navigation -->
@@ -40,28 +379,56 @@
             <h1 class="forum-heading">Community Forum</h1>
             <p class="forum-subheading">Discuss campus life, academics, events, and more with fellow students.</p>
 
+            <!-- Forum Controls -->
+            <div class="forum-controls">
+                <div class="forum-search-box">
+                    <input type="text" placeholder="Search discussions..." />
+                </div>
+                <a href="#" class="create-topic-btn">Start New Discussion</a>
+            </div>
+
             <div class="forum-topics">
                 <div class="forum-topic">
+                    <span class="topic-category academic">Academic</span>
                     <h2 class="topic-title">Exam Preparation Tips</h2>
-                    <p class="topic-snippet">Share your strategies and resources for preparing for final exams.</p>
+                    <p class="topic-snippet">Share your strategies and resources for preparing for final exams. What methods work best for different subjects?</p>
+                    <div class="topic-meta">
+                        <span class="posts">23 posts</span>
+                        <span class="latest">Updated: 2 hours ago</span>
+                    </div>
                     <a href="#" class="topic-readmore">Join Discussion →</a>
                 </div>
 
                 <div class="forum-topic">
+                    <span class="topic-category hostel">Hostel Life</span>
                     <h2 class="topic-title">Hostel Life Hacks</h2>
-                    <p class="topic-snippet">From finding good food to organizing your space—what are your hostel life tips?</p>
+                    <p class="topic-snippet">From finding good food to organizing your space—what are your hostel life tips? Share your ingenious solutions!</p>
+                    <div class="topic-meta">
+                        <span class="posts">47 posts</span>
+                        <span class="latest">Updated: Today</span>
+                    </div>
                     <a href="#" class="topic-readmore">Join Discussion →</a>
                 </div>
 
                 <div class="forum-topic">
+                    <span class="topic-category career">Career</span>
                     <h2 class="topic-title">Internship Opportunities</h2>
-                    <p class="topic-snippet">Know a company hiring interns? Or need help with applications? This is the place.</p>
+                    <p class="topic-snippet">Know a company hiring interns? Or need help with applications? This is the place to share opportunities and advice.</p>
+                    <div class="topic-meta">
+                        <span class="posts">32 posts</span>
+                        <span class="latest">Updated: Yesterday</span>
+                    </div>
                     <a href="#" class="topic-readmore">Join Discussion →</a>
                 </div>
 
                 <div class="forum-topic">
+                    <span class="topic-category events">Events</span>
                     <h2 class="topic-title">Upcoming Club Events</h2>
-                    <p class="topic-snippet">Discuss, plan or promote your club's upcoming events here.</p>
+                    <p class="topic-snippet">Discuss, plan or promote your club's upcoming events here. Find collaborators or participants for campus activities.</p>
+                    <div class="topic-meta">
+                        <span class="posts">15 posts</span>
+                        <span class="latest">Updated: 3 days ago</span>
+                    </div>
                     <a href="#" class="topic-readmore">Join Discussion →</a>
                 </div>
             </div>
