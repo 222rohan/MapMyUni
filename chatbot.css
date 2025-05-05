@@ -8,28 +8,6 @@
     --accent-blue: #3a6ea5;
 }
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-
-body {
-    display: flex;
-    height: 100vh;
-    overflow: hidden;
-}
-
-.sidebar {
-    width: 280px;
-    background-color: var(--primary-blue);
-    color: var(--white);
-    display: flex;
-    flex-direction: column;
-    flex-shrink: 0;
-}
-
 .logo-container {
     padding: 1.5rem;
     display: flex;
