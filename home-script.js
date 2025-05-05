@@ -74,11 +74,9 @@ const points = [
         name: 'Admin Building',
         lat: 12.83957038303225,
         lng: 80.13747977324925,
-        content: 'Houses the administrative offices, faculty rooms, and some classrooms.',
+        content: 'Houses the administrative offices.',
         images: [
-            '/api/placeholder/500/300',
-            '/api/placeholder/500/300',
-            '/api/placeholder/500/300'
+            './images/admin.png',
         ],
         comments: [
             {
@@ -88,38 +86,6 @@ const points = [
                 content: 'The admin building has excellent modern facilities. The air conditioning works really well even during summer.',
                 upvotes: 15,
                 downvotes: 2
-            },
-            {
-                author: 'RJ',
-                authorName: 'Rahul Jain',
-                date: 'April 28, 2025', 
-                content: 'The waiting area near the admissions office could use more seating.',
-                upvotes: 8,
-                downvotes: 1
-            },
-            {
-                author: 'SP',
-                authorName: 'Sanjay Patel',
-                date: 'April 25, 2025',
-                content: 'Faculty offices are well organized by department, makes it easy to find professors during office hours.',
-                upvotes: 12,
-                downvotes: 0
-            },
-            {
-                author: 'NS',
-                authorName: 'Nina Sharma',
-                date: 'April 22, 2025',
-                content: 'The admin building cafeteria has the best coffee on campus!',
-                upvotes: 20,
-                downvotes: 3
-            },
-            {
-                author: 'VR',
-                authorName: 'Vikram Reddy',
-                date: 'April 20, 2025',
-                content: 'Make sure to check notice boards regularly for important announcements.',
-                upvotes: 7,
-                downvotes: 1
             }
         ]
     },
@@ -129,7 +95,30 @@ const points = [
         lng: 80.13702031474783,
         content: 'All classrooms of departments',
         image: '/images/academic.jpg',
-        moreLink: '/locations/academic'
+        moreLink: '/locations/academic',
+        images: [
+            './images/acads.jpg',
+        ],
+        comments: [
+            {
+                author: 'PN',
+                authorName: 'Prakash Nair',
+                date: 'May 4, 2025',
+                content: 'Classrooms are spacious and well-equipped with projectors and whiteboards.',
+                upvotes: 18,
+                downvotes: 1
+            },
+            {
+                author: 'RS',
+                authorName: 'Rohan Shenoy',
+                date: 'April 29, 2025',
+                content: 'Well maintained and clean. The air conditioning is a lifesaver during summer.',
+                upvotes: 14,
+                downvotes: 0
+            },
+        ]
+
+
     },
     {
         name: 'Jasmine Annex',
@@ -137,9 +126,7 @@ const points = [
         lng: 80.1353294935948,
         content: 'First year boys hostel with modern amenities and shared common spaces.',
         images: [
-            '/api/placeholder/500/300',
-            '/api/placeholder/500/300',
-            '/api/placeholder/500/300'
+            './images/jasmine.jpg',
         ],
         comments: [
             {
@@ -190,9 +177,7 @@ const points = [
         lng: 80.13820326190206,
         content: 'Central Library with extensive physical and digital resources.',
         images: [
-            '/api/placeholder/500/300',
-            '/api/placeholder/500/300',
-            '/api/placeholder/500/300'
+            './images/library.jpg',
         ],
         comments: [
             {
@@ -242,12 +227,10 @@ const points = [
         lat: 12.837853926836036,
         lng: 80.13847339312308,
         content: 'Snacks and drinks',
-        image: '/images/cafeteria.jpg',
+        image: './images/cafeteria.jpg',
         moreLink: '/locations/cafeteria',
         images: [
-            '/api/placeholder/500/300',
-            '/api/placeholder/500/300',
-            '/api/placeholder/500/300'
+            './images/cafeteria.jpg',
         ],
         comments: [
             {
@@ -276,9 +259,7 @@ const points = [
         image: '/images/sports.jpg',
         moreLink: '/locations/sports',
         images: [
-            '/api/placeholder/500/300',
-            '/api/placeholder/500/300',
-            '/api/placeholder/500/300'
+            './images/sports.jpg',
         ],
         comments: [
             {
