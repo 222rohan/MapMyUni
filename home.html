@@ -12,11 +12,13 @@
     <div class="sidebar">
         <div class="sidebar-header">
             <div class="college-logo">
+
                 <img src="./images/clg-logo.png" alt="IIITDM Logo" />
                 <div class="college-name">IIITDM Portal</div>
             </div>
         </div>
         <ul class="sidebar-menu">
+
             <li><a href="home.html" class="active">Home</a></li>
             <li><a href="community.html">Community Forum</a></li>
             <li><a href="chatbot.html">Chatbot Assistant</a></li>
@@ -26,7 +28,6 @@
 
     <!-- Main Content Area -->
     <div class="main-content">
-
         <div class="welcome-section">
         <div class="welcome-header">
             <h1 class="welcome-heading">Welcome to IIITDM Community Portal</h1>
@@ -38,31 +39,68 @@
         </div>
     </div>
 
+
         <!-- Campus Map Section -->
         <div class="campus-map-section">
             <div class="campus-map-header">
-                <div class="campus-map-title"> <h2>  IIITDM Campus Map</h2></div>
+                <div class="campus-map-title">IIITDM Campus Map</div>
                 <a href="#" class="view-full-map">View Full Map →</a>
             </div>
-
-            <div>
-                <div class="campus-map-title">Popular Spots</div>
-
-                <div class="quick-links">
-                    <a href="#" class="quick-link" onclick="gotoMarker('Admin Building')">🏢 Admin</a>
-                    <a href="#" class="quick-link" onclick="gotoMarker('Academic Block')">🏫 Academic Block</a>
-                    <a href="#" class="quick-link" onclick="gotoMarker('Jasmine Annex')">🏡 Hostels</a>
-                    <a href="#" class="quick-link" onclick="gotoMarker('Cafeteria')">🍽️ Cafeteria</a>
-                    <a href="#" class="quick-link" onclick="gotoMarker('Library')">📚 Library</a>
-                </div>
-            </div>
-
             <div class="campus-map-container">
                 <div id="leaflet-map" style="width: 100%; height: 100%;"></div>
                 <div class="map-overlay">IIITDM Kancheepuram Campus</div>
-            </div>  
+                
+                <!-- Enhanced Location Modal -->
+                <div id="location-modal" class="location-modal">
+                    <div class="location-modal-content">
+                        <div class="modal-header">
+                            <h2 id="modal-title">Location Name</h2>
+                            <span class="close-modal">&times;</span>
+                        </div>
+                        <div class="modal-body">
+                            <!-- Image Gallery -->
+                            <div class="location-images">
+                                <div class="main-image">
+                                    <img id="main-location-image" src="/api/placeholder/500/300" alt="Location">
+                                </div>
+                                <div class="image-thumbnails">
+                                    <img class="thumbnail active" src="/api/placeholder/100/60" alt="Thumbnail 1" data-src="/api/placeholder/500/300">
+                                    <img class="thumbnail" src="/api/placeholder/100/60" alt="Thumbnail 2" data-src="/api/placeholder/500/300">
+                                    <img class="thumbnail" src="/api/placeholder/100/60" alt="Thumbnail 3" data-src="/api/placeholder/500/300">
+                                </div>
+                            </div>
+                            
+                            <!-- Location Description -->
+                            <div class="location-description">
+                                <p id="modal-description">Location description goes here.</p>
+                            </div>
+                            
+                            <!-- Comments Section -->
+                            <div class="comments-section">
+                                <h3>Discussions</h3>
+                                <div id="comments-container">
+                                    <!-- Comments will be loaded dynamically -->
+                                </div>
+                                <a href="#" id="view-all-comments" class="view-all-link">View All Discussions →</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="sidebar" class="map-sidebar">
+                    <button onclick="closeSidebar()" style="position:absolute;top:10px;right:10px;font-size:20px;">×</button>
+                    <div class="sidebar-content" id="sidebar-content"></div>
+                  </div>
+                  
+            </div>
+            <div class="quick-links">
+                <a href="#" class="quick-link" onclick="gotoMarker('Admin Building')">🏢 Admin</a>
+                <a href="#" class="quick-link" onclick="gotoMarker('Academic Block')">🏫 Academic Block</a>
+                <a href="#" class="quick-link" onclick="gotoMarker('Jasmine Annex')">🏡 Hostels</a>
+                <a href="#" class="quick-link" onclick="gotoMarker('Cafeteria')">🍽️ Cafeteria</a>
+                <a href="#" class="quick-link" onclick="gotoMarker('Library')">📚 Library</a>
+            </div>
         </div>
-
+    </div>     
         <!-- Announcements Section -->
         <section class="announcements">
             <h2 class="announcements-heading">Latest Announcements</h2>
@@ -100,8 +138,6 @@
                 <button class="read-more-btn">Read More →</button>
             </article>
         </section>
-        
-        
     <!-- Login Overlay -->
     <div class="login-overlay" style="display: none;">
         <div class="login-container">
@@ -128,6 +164,5 @@
 
     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
     <script src="home-script.js"></script>
-
 </body>
 </html>
