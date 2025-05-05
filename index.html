@@ -53,11 +53,11 @@
                 <div class="map-overlay">IIITDM Kancheepuram Campus</div>
             </div>
             <div class="quick-links">
-                <a href="#" class="quick-link">🏢 Main Building</a>
-                <a href="#" class="quick-link">🏫 Academic Block</a>
-                <a href="#" class="quick-link">🏡 Hostels</a>
-                <a href="#" class="quick-link">🍽️ Canteen</a>
-                <a href="#" class="quick-link">📚 Library</a>
+                <a href="#" class="quick-link" onclick="gotoMarker('Admin Building')">🏢 Admin</a>
+                <a href="#" class="quick-link" onclick="gotoMarker('Academic Block')">🏫 Academic Block</a>
+                <a href="#" class="quick-link" onclick="gotoMarker('Jasmine Annex')">🏡 Hostels</a>
+                <a href="#" class="quick-link" onclick="gotoMarker('Cafeteria')">🍽️ Cafeteria</a>
+                <a href="#" class="quick-link" onclick="gotoMarker('Library')">📚 Library</a>
             </div>
         </div>
 
@@ -127,15 +127,31 @@
             document.body.appendChild(modal);
         }
 
+        const markerMap = {};
+
         const points = [
-            { name: 'Main Building', lat: 12.8399, lng: 80.1367, content: 'Admin and Classrooms' },
-            { name: 'Hostel A', lat: 12.8404, lng: 80.1359, content: 'Boys Hostel A with 150+ rooms' },
-            { name: 'Library', lat: 12.8395, lng: 80.1372, content: 'Central Library with digital access' },
+            { name: 'Admin Building', lat: 12.83957038303225, lng: 80.13747977324925, content: 'Admin and Classrooms' },
+            { name: 'Jasmine Annex', lat: 12.836874401872773, lng: 80.1353294935948, content: 'First year boys hostel' },
+            { name: 'Library', lat: 12.8390733564217, lng: 80.13820326190206, content: 'Central Library with digital access' },
+            { name: 'Academic Block', lat: 12.838766081513057, lng: 80.13702031474783, content: 'All classrooms of departments' },
+            { name: 'Cafeteria', lat: 12.837853926836036, lng: 80.13847339312308, content: 'Snacks and drinks' },
+            { name: 'Sports Complex', lat: 12.836449905878164, lng: 80.13781335604857, content: 'Badminton, TT, Carrom' },
         ];
 
         points.forEach(p => {
-            L.marker([p.lat, p.lng]).addTo(map).on('click', () => showModal(p.name, p.content));
+            const marker = L.marker([p.lat, p.lng]).addTo(map).on('click', () => showModal(p.name, p.content));
+            markerMap[p.name] = marker;
         });
+
+        function gotoMarker(name) {
+            const marker = markerMap[name];
+            if (marker) {
+                map.setView(marker.getLatLng(), 18, { animate: true });
+                showModal(name, points.find(p => p.name === name)?.content || "");
+            } else {
+                alert(`Marker for "${name}" not found.`);
+            }
+        }
     </script>
 </body>
 </html>
