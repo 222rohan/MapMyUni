@@ -18,7 +18,35 @@ const modal = document.getElementById('new-discussion-modal');
 const openModalButton = document.querySelector('.create-topic-btn');
 const closeModalButton = document.querySelector('.close-btn');
 const form = document.getElementById('new-discussion-form');
+const searchInput = document.getElementById('search-input');
+const categoryFilter = document.getElementById('category-filter');
 const forumTopics = document.querySelector('.forum-topics');
+
+searchInput.addEventListener('input', filterTopics);
+categoryFilter.addEventListener('change', filterTopics);
+
+function filterTopics() {
+    const searchTerm = searchInput.value.toLowerCase();
+    const selectedCategory = categoryFilter.value;
+
+    const topics = forumTopics.querySelectorAll('.forum-topic');
+
+    topics.forEach(function(topic) {
+        const title = topic.querySelector('.topic-title').textContent.toLowerCase();
+        const snippet = topic.querySelector('.topic-snippet').textContent.toLowerCase();
+        const category = topic.querySelector('.topic-category').textContent.toLowerCase();
+
+        const matchesSearch = title.includes(searchTerm) || snippet.includes(searchTerm);
+        const matchesCategory = selectedCategory ? category.includes(selectedCategory) : true;
+
+        // Display or hide the topic based on the filters
+        if (matchesSearch && matchesCategory) {
+            topic.style.display = 'block';  // Show matching topic
+        } else {
+            topic.style.display = 'none';  // Hide non-matching topic
+        }
+    });
+}
 
 openModalButton.addEventListener('click', function() {
     modal.style.display = 'block';
