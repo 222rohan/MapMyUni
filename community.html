@@ -36,6 +36,228 @@
             </div>
         </div>
 
+        <!-- Campus Locations -->
+        <section class="campus-locations-section">
+            <h1 class="locations-heading">Campus Locations</h1>
+            <p class="locations-subheading">Explore popular places around campus and share your experiences.</p>
+        
+            <!-- Locations Controls -->
+            <div class="locations-controls">
+                <div class="location-search-box">
+                    <input type="text" placeholder="Search locations..." id="location-search-input" />
+                </div>
+                <select id="location-filter">
+                    <option value="all">All Locations</option>
+                    <option value="academic">Academic</option>
+                    <option value="dining">Dining</option>
+                    <option value="recreation">Recreation</option>
+                    <option value="study">Study Spots</option>
+                </select>
+                <a href="javascript:void(0);" class="add-location-btn" id="open-location-modal-btn">Add New Location</a>
+            </div>
+        
+            <!-- Modal for adding new location -->
+            <div id="new-location-modal" class="modal">
+                <div class="modal-content">
+                    <span class="close-btn">&times;</span>
+                    <h2>Add New Location</h2>
+                    <form id="new-location-form">
+                        <label for="location-name">Location Name:</label>
+                        <input type="text" id="location-name" name="name" required>
+                        
+                        <label for="location-category">Category:</label>
+                        <select id="location-category" name="category">
+                            <option value="academic">Academic</option>
+                            <option value="dining">Dining</option>
+                            <option value="recreation">Recreation</option>
+                            <option value="study">Study Spots</option>
+                        </select>
+                        
+                        <label for="location-description">Description:</label>
+                        <textarea id="location-description" name="description" rows="3" required></textarea>
+                        
+                        <label for="location-image">Image:</label>
+                        <input type="file" id="location-image" name="image" accept="image/*">
+                        
+                        <button type="submit">Add Location</button>
+                    </form>
+                </div>
+            </div>
+        
+            <!-- Location Cards -->
+            <div class="location-cards">
+                <!-- Location Card 1 -->
+                <div class="location-card" data-category="academic">
+                    <div class="location-image">
+                        <img src="./images/library.jpg" alt="University Library" />
+                    </div>
+                    <div class="location-info">
+                        <span class="location-category academic">Academic</span>
+                        <h2 class="location-name">University Library</h2>
+                        <p class="location-description">The central library offers five floors of study spaces, research resources, and meeting rooms. Open 24/7 during exam periods.</p>
+                        
+                        <!-- Comments Section -->
+                        <div class="location-comments">
+                            <h3>Student Comments <span class="comment-count">(2)</span></h3>
+                            
+                            <div class="comments-list">
+                                <div class="comment">
+                                    <div class="comment-header">
+                                        <span class="commenter">Alex P.</span>
+                                        <span class="comment-date">3 days ago</span>
+                                    </div>
+                                    <p class="comment-text">The quiet zone on the 4th floor is perfect for intense study sessions. Always find a spot there!</p>
+                                </div>
+                                
+                                <div class="comment">
+                                    <div class="comment-header">
+                                        <span class="commenter">Jamie L.</span>
+                                        <span class="comment-date">1 week ago</span>
+                                    </div>
+                                    <p class="comment-text">Group study rooms need to be booked at least 3 days in advance during midterms. Plan accordingly!</p>
+                                </div>
+                            </div>
+                            
+                            <!-- Add Comment Form -->
+                            <form class="add-comment-form">
+                                <textarea placeholder="Share your experience..." required></textarea>
+                                <button type="submit">Post Comment</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+        
+                <!-- Location Card 2 -->
+                <div class="location-card" data-category="dining">
+                    <div class="location-image">
+                        <img src="./images/cafeteria.jpg" alt="Student Center Café" />
+                    </div>
+                    <div class="location-info">
+                        <span class="location-category dining">Dining</span>
+                        <h2 class="location-name">Student Center Café</h2>
+                        <p class="location-description">Popular meeting spot with a variety of food options, coffee, and comfortable seating. Offers student discounts and weekly specials.</p>
+                        
+                        <!-- Comments Section -->
+                        <div class="location-comments">
+                            <h3>Student Comments <span class="comment-count">(3)</span></h3>
+                            
+                            <div class="comments-list">
+                                <div class="comment">
+                                    <div class="comment-header">
+                                        <span class="commenter">Taylor R.</span>
+                                        <span class="comment-date">Yesterday</span>
+                                    </div>
+                                    <p class="comment-text">The breakfast burrito is amazing but they usually run out by 10am!</p>
+                                </div>
+                                
+                                <div class="comment">
+                                    <div class="comment-header">
+                                        <span class="commenter">Morgan K.</span>
+                                        <span class="comment-date">3 days ago</span>
+                                    </div>
+                                    <p class="comment-text">Wi-Fi can be spotty during peak hours, but the coffee is worth it.</p>
+                                </div>
+                                
+                                <div class="comment">
+                                    <div class="comment-header">
+                                        <span class="commenter">Jordan B.</span>
+                                        <span class="comment-date">1 week ago</span>
+                                    </div>
+                                    <p class="comment-text">Taco Tuesdays are the best deal on campus - $1 off each taco!</p>
+                                </div>
+                            </div>
+                            
+                            <!-- Add Comment Form -->
+                            <form class="add-comment-form">
+                                <textarea placeholder="Share your experience..." required></textarea>
+                                <button type="submit">Post Comment</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+        
+                <!-- Location Card 3 -->
+                <div class="location-card" data-category="recreation">
+                    <div class="location-image">
+                        <img src="./images/recreation-center.jpg" alt="Recreation Center" />
+                    </div>
+                    <div class="location-info">
+                        <span class="location-category recreation">Recreation</span>
+                        <h2 class="location-name">Recreation Center</h2>
+                        <p class="location-description">State-of-the-art fitness facilities including gym, pool, basketball courts, and various fitness classes. Free for students with ID.</p>
+                        
+                        <!-- Comments Section -->
+                        <div class="location-comments">
+                            <h3>Student Comments <span class="comment-count">(1)</span></h3>
+                            
+                            <div class="comments-list">
+                                <div class="comment">
+                                    <div class="comment-header">
+                                        <span class="commenter">Casey M.</span>
+                                        <span class="comment-date">2 days ago</span>
+                                    </div>
+                                    <p class="comment-text">The yoga classes on Wednesday evenings are excellent! Sign up early as they fill up quickly.</p>
+                                </div>
+                            </div>
+                            
+                            <!-- Add Comment Form -->
+                            <form class="add-comment-form">
+                                <textarea placeholder="Share your experience..." required></textarea>
+                                <button type="submit">Post Comment</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+        
+                <!-- Location Card 4 -->
+                <div class="location-card" data-category="study">
+                    <div class="location-image">
+                        <img src="./images/innovation hub.jpg" alt="Innovation Hub" />
+                    </div>
+                    <div class="location-info">
+                        <span class="location-category study">Study Spots</span>
+                        <h2 class="location-name">Innovation Hub</h2>
+                        <p class="location-description">Modern collaborative workspace with tech resources, 3D printers, and presentation areas. Perfect for group projects and innovation.</p>
+                        
+                        <!-- Comments Section -->
+                        <div class="location-comments">
+                            <h3>Student Comments <span class="comment-count">(2)</span></h3>
+                            
+                            <div class="comments-list">
+                                <div class="comment">
+                                    <div class="comment-header">
+                                        <span class="commenter">Riley J.</span>
+                                        <span class="comment-date">4 days ago</span>
+                                    </div>
+                                    <p class="comment-text">The 3D printing station has been a game-changer for my engineering project. Staff is super helpful!</p>
+                                </div>
+                                
+                                <div class="comment">
+                                    <div class="comment-header">
+                                        <span class="commenter">Quinn T.</span>
+                                        <span class="comment-date">2 weeks ago</span>
+                                    </div>
+                                    <p class="comment-text">Great place to work but gets very crowded between 2-5pm. Morning is the best time to find a spot.</p>
+                                </div>
+                            </div>
+                            
+                            <!-- Add Comment Form -->
+                            <form class="add-comment-form">
+                                <textarea placeholder="Share your experience..." required></textarea>
+                                <button type="submit">Post Comment</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        
+            <!-- Load More Button -->
+            <div class="load-more-container">
+                <button id="load-more-locations" class="load-more-btn">Load More Locations</button>
+            </div>
+        
+        </section>
+
         <!-- Forum Section -->
         <section class="forum-section">
             <h1 class="forum-heading">Community Forum</h1>
@@ -117,6 +339,7 @@
                 </div>
             </div>
         </section>
+        
     </div>
 
     <script src="community-script.js"></script>

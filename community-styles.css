@@ -318,3 +318,340 @@
 .modal-content span:hover {
     color: #d00;
 }
+
+/* Campus Locations Section Styling */
+.campus-locations-section {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    font-family: Arial, sans-serif;
+}
+
+.locations-heading {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    color: #2c3e50;
+}
+
+.locations-subheading {
+    font-size: 1.1rem;
+    color: #7f8c8d;
+    margin-bottom: 30px;
+}
+
+/* Controls Styling */
+.locations-controls {
+    display: flex;
+    align-items: center;
+    margin-bottom: 30px;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.location-search-box {
+    flex-grow: 1;
+}
+
+.location-search-box input {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+#location-filter {
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+    background-color: white;
+}
+
+.add-location-btn {
+    background-color: #3498db;
+    color: white;
+    padding: 12px 18px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.add-location-btn:hover {
+    background-color: #2980b9;
+}
+
+/* Location Cards Styling */
+.location-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
+    gap: 30px;
+    margin-bottom: 30px;
+}
+
+.location-card {
+    display: flex;
+    flex-direction: column;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    background-color: white;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.location-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+}
+
+.location-image {
+    height: 250px;
+    overflow: hidden;
+}
+
+.location-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s;
+}
+
+.location-card:hover .location-image img {
+    transform: scale(1.05);
+}
+
+.location-info {
+    padding: 20px;
+}
+
+.location-category {
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    color: white;
+}
+
+.academic {
+    background-color: #3498db;
+}
+
+.dining {
+    background-color: #e74c3c;
+}
+
+.recreation {
+    background-color: #27ae60;
+}
+
+.study {
+    background-color: #9b59b6;
+}
+
+.location-name {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: #2c3e50;
+}
+
+.location-description {
+    color: #7f8c8d;
+    line-height: 1.5;
+    margin-bottom: 20px;
+}
+
+/* Comments Section Styling */
+.location-comments {
+    margin-top: 20px;
+    border-top: 1px solid #eee;
+    padding-top: 20px;
+}
+
+.location-comments h3 {
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+    color: #2c3e50;
+}
+
+.comment-count {
+    color: #7f8c8d;
+    font-weight: normal;
+}
+
+.comments-list {
+    margin-bottom: 20px;
+}
+
+.comment {
+    padding: 15px;
+    background-color: #f9f9f9;
+    border-radius: 6px;
+    margin-bottom: 10px;
+}
+
+.comment-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+}
+
+.commenter {
+    font-weight: bold;
+    color: #2c3e50;
+}
+
+.comment-date {
+    font-size: 0.85rem;
+    color: #95a5a6;
+}
+
+.comment-text {
+    color: #34495e;
+    line-height: 1.4;
+}
+
+/* Add Comment Form */
+.add-comment-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.add-comment-form textarea {
+    width: 100%;
+    min-height: 80px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    resize: vertical;
+}
+
+.add-comment-form button {
+    align-self: flex-end;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.add-comment-form button:hover {
+    background-color: #2980b9;
+}
+
+/* Modal Styling */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+    overflow: auto;
+}
+
+.modal-content {
+    background-color: white;
+    margin: 10% auto;
+    padding: 30px;
+    border-radius: 8px;
+    max-width: 600px;
+    position: relative;
+}
+
+.close-btn {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 1.8rem;
+    cursor: pointer;
+    color: #95a5a6;
+}
+
+.close-btn:hover {
+    color: #2c3e50;
+}
+
+/* Form Styling */
+#new-location-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+#new-location-form label {
+    font-weight: bold;
+    color: #2c3e50;
+}
+
+#new-location-form input,
+#new-location-form select,
+#new-location-form textarea {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+#new-location-form button {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s;
+    margin-top: 10px;
+}
+
+#new-location-form button:hover {
+    background-color: #2980b9;
+}
+
+/* Load More Button */
+.load-more-container {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.load-more-btn {
+    background-color: transparent;
+    border: 2px solid #3498db;
+    color: #3498db;
+    font-weight: bold;
+    padding: 12px 25px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.load-more-btn:hover {
+    background-color: #3498db;
+    color: white;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .location-cards {
+        grid-template-columns: 1fr;
+    }
+    
+    .locations-controls {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .add-location-btn {
+        text-align: center;
+    }
+}
