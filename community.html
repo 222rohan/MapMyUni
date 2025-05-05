@@ -44,9 +44,31 @@
             <!-- Forum Controls -->
             <div class="forum-controls">
                 <div class="forum-search-box">
-                    <input type="text" placeholder="Search discussions..." />
+                    <input type="text" placeholder="Search discussions..." id="search-input" />
                 </div>
-                <a href="#" class="create-topic-btn">Start New Discussion</a>
+                <a href="javascript:void(0);" class="create-topic-btn" id="open-modal-btn">Start New Discussion</a>
+            </div>
+
+            <!-- Modal for creating new discussion -->
+            <div id="new-discussion-modal" class="modal">
+                <div class="modal-content">
+                    <span class="close-btn">&times;</span>
+                    <h2>Create New Discussion</h2>
+                    <form id="new-discussion-form">
+                        <label for="topic-title">Title:</label>
+                        <input type="text" id="topic-title" name="title" required>
+                        <label for="topic-category">Category:</label>
+                        <select id="topic-category" name="category">
+                            <option value="academic">Academic</option>
+                            <option value="hostel">Hostel</option>
+                            <option value="career">Career</option>
+                            <option value="events">Events</option>
+                        </select>
+                        <label for="topic-content">Content:</label>
+                        <textarea id="topic-content" name="content" rows="4" required></textarea>
+                        <button type="submit">Create Discussion</button>
+                    </form>
+                </div>
             </div>
 
             <div class="forum-topics">
@@ -96,5 +118,8 @@
             </div>
         </section>
     </div>
+
+    <script src="community-script.js"></script>
+
 </body>
 </html>
