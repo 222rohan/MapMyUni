@@ -1,17 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>IIITDM College Portal</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
 </head>
 <body>
     <!-- Sidebar Navigation -->
     <div class="sidebar">
         <div class="sidebar-header">
             <div class="college-logo">
-                <img src="/api/placeholder/40/40" alt="IIITDM Logo">
+                <img src="/api/placeholder/40/40" alt="IIITDM Logo" />
                 <div class="college-name">IIITDM Portal</div>
             </div>
         </div>
@@ -48,8 +49,7 @@
                 <a href="#" class="view-full-map">View Full Map →</a>
             </div>
             <div class="campus-map-container">
-                <!-- Placeholder map image (in real implementation, this would be Google Maps/OpenStreetMap) -->
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1480.8333807856934!2d80.13649023801645!3d12.839851142244735!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a525851fbcd3b6b%3A0x9f1067aa71e3898e!2sIndian%20Institute%20of%20Information%20Technology%2C%20Design%20and%20Manufacturing%2C%20Kancheepuram!5e0!3m2!1sen!2sus!4v1746423589736!5m2!1sen!2sus" width="1200" height="800" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                <div id="leaflet-map" style="width: 100%; height: 100%;"></div>
                 <div class="map-overlay">IIITDM Kancheepuram Campus</div>
             </div>
             <div class="quick-links">
@@ -82,21 +82,21 @@
         </div>
     </div>
 
-    <!-- Login Overlay (Hidden by default, show with JavaScript) -->
+    <!-- Login Overlay -->
     <div class="login-overlay" style="display: none;">
         <div class="login-container">
             <div class="login-header">
-                <img src="/api/placeholder/80/80" alt="IIITDM Logo">
+                <img src="/api/placeholder/80/80" alt="IIITDM Logo" />
                 <h2>Login to IIITDM Portal</h2>
             </div>
             <form class="login-form">
                 <div class="form-group">
                     <label for="username">Username or Email</label>
-                    <input type="text" id="username" placeholder="Enter your username or email">
+                    <input type="text" id="username" placeholder="Enter your username or email" />
                 </div>
                 <div class="form-group">
                     <label for="password">Password</label>
-                    <input type="password" id="password" placeholder="Enter your password">
+                    <input type="password" id="password" placeholder="Enter your password" />
                 </div>
                 <button type="submit" class="login-btn">Login</button>
             </form>
@@ -105,5 +105,37 @@
             </div>
         </div>
     </div>
+
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script>
+        const map = L.map('leaflet-map').setView([12.8399, 80.1365], 17);
+
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 20,
+            attribution: '© OpenStreetMap'
+        }).addTo(map);
+
+        function showModal(title, content) {
+            const modal = document.createElement('div');
+            modal.className = 'map-modal';
+            modal.innerHTML = `
+                <div class="map-modal-content">
+                    <h3>${title}</h3>
+                    <p>${content}</p>
+                    <button onclick="this.parentElement.parentElement.remove()">Close</button>
+                </div>`;
+            document.body.appendChild(modal);
+        }
+
+        const points = [
+            { name: 'Main Building', lat: 12.8399, lng: 80.1367, content: 'Admin and Classrooms' },
+            { name: 'Hostel A', lat: 12.8404, lng: 80.1359, content: 'Boys Hostel A with 150+ rooms' },
+            { name: 'Library', lat: 12.8395, lng: 80.1372, content: 'Central Library with digital access' },
+        ];
+
+        points.forEach(p => {
+            L.marker([p.lat, p.lng]).addTo(map).on('click', () => showModal(p.name, p.content));
+        });
+    </script>
 </body>
 </html>
