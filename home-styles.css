@@ -144,6 +144,41 @@ body {
     font-weight: 500;
 }
 
+/* Welcome Section - Visual Hierarchy */
+.welcome-section {
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 25px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.welcome-header {
+    display: flex;
+    justify-content: space-between; /* or space-evenly/space-around as needed */
+    align-items: center;
+    flex-wrap: wrap; /* Optional, for responsiveness */
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.user-avatar {
+    background-color: #1a3a5f;
+    color: white;
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+}
+
+
 /* Campus Map Section - Focus of attention */
 .campus-map-section {
     background-color: #fff;
