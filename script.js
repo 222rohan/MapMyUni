@@ -237,13 +237,14 @@ const createModalContainer = () => {
     modalContainer.style.display = 'none';
     modalContainer.style.position = 'absolute';
     modalContainer.style.top = '0';
-    modalContainer.style.width = '40%';
+    modalContainer.style.width = '35%';
     modalContainer.style.right = 'auto'; // override the full-width setting
     modalContainer.style.bottom = '0';
     modalContainer.style.backgroundColor = 'rgba(255, 255, 255, 0.95)';
     modalContainer.style.zIndex = '1000';
     modalContainer.style.padding = '20px';
     modalContainer.style.overflowY = 'auto';
+    modalContainer.style.fontSize = '16px';
     
     // Add to map container
     document.getElementById('leaflet-map').appendChild(modalContainer);
