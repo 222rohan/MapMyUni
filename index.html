@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IIITDM College Portal</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Sidebar Navigation -->
+    <div class="sidebar">
+        <div class="sidebar-header">
+            <div class="college-logo">
+                <img src="/api/placeholder/40/40" alt="IIITDM Logo">
+                <div class="college-name">IIITDM Portal</div>
+            </div>
+        </div>
+        <ul class="sidebar-menu">
+            <li><a href="#" class="active">Home</a></li>
+            <li><a href="#">Community Forum</a></li>
+            <li><a href="#">Campus Map</a></li>
+            <li><a href="#">Chatbot Assistant</a></li>
+            <li><a href="#">Log Out</a></li>
+        </ul>
+    </div>
+
+    <!-- Main Content Area -->
+    <div class="main-content">
+        <!-- Top Navigation -->
+        <div class="top-nav">
+            <div></div>
+            <div class="user-info">
+                <div class="user-avatar">S</div>
+                <div class="user-name">Student</div>
+            </div>
+        </div>
+
+        <!-- Welcome Section -->
+        <div class="welcome-section">
+            <h1 class="welcome-heading">Welcome to IIITDM College Portal</h1>
+            <p class="welcome-subheading">Access campus resources, connect with community, and get assistance all in one place.</p>
+        </div>
+
+        <!-- Campus Map Section -->
+        <div class="campus-map-section">
+            <div class="campus-map-header">
+                <div class="campus-map-title">IIITDM Campus Map</div>
+                <a href="#" class="view-full-map">View Full Map →</a>
+            </div>
+            <div class="campus-map-container">
+                <!-- Placeholder map image (in real implementation, this would be Google Maps/OpenStreetMap) -->
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1480.8333807856934!2d80.13649023801645!3d12.839851142244735!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a525851fbcd3b6b%3A0x9f1067aa71e3898e!2sIndian%20Institute%20of%20Information%20Technology%2C%20Design%20and%20Manufacturing%2C%20Kancheepuram!5e0!3m2!1sen!2sus!4v1746423589736!5m2!1sen!2sus" width="1200" height="800" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                <div class="map-overlay">IIITDM Kancheepuram Campus</div>
+            </div>
+            <div class="quick-links">
+                <a href="#" class="quick-link">🏢 Main Building</a>
+                <a href="#" class="quick-link">🏫 Academic Block</a>
+                <a href="#" class="quick-link">🏡 Hostels</a>
+                <a href="#" class="quick-link">🍽️ Canteen</a>
+                <a href="#" class="quick-link">📚 Library</a>
+            </div>
+        </div>
+
+        <!-- Announcements Section -->
+        <div class="announcements">
+            <h2>Latest Announcements</h2>
+            <div class="announcement-item">
+                <div class="announcement-date">May 4, 2025</div>
+                <div class="announcement-title">Summer Internship Fair - May 15th</div>
+                <div class="announcement-desc">Join us at the Main Auditorium for the annual Summer Internship Fair. Companies from all over the country will be present.</div>
+            </div>
+            <div class="announcement-item">
+                <div class="announcement-date">May 3, 2025</div>
+                <div class="announcement-title">Updated Exam Schedule Released</div>
+                <div class="announcement-desc">The final examination schedule for this semester has been released. Please check your student dashboard.</div>
+            </div>
+            <div class="announcement-item">
+                <div class="announcement-date">May 1, 2025</div>
+                <div class="announcement-title">Library Hours Extended</div>
+                <div class="announcement-desc">Library hours have been extended until midnight during the exam period starting next week.</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Login Overlay (Hidden by default, show with JavaScript) -->
+    <div class="login-overlay" style="display: none;">
+        <div class="login-container">
+            <div class="login-header">
+                <img src="/api/placeholder/80/80" alt="IIITDM Logo">
+                <h2>Login to IIITDM Portal</h2>
+            </div>
+            <form class="login-form">
+                <div class="form-group">
+                    <label for="username">Username or Email</label>
+                    <input type="text" id="username" placeholder="Enter your username or email">
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" placeholder="Enter your password">
+                </div>
+                <button type="submit" class="login-btn">Login</button>
+            </form>
+            <div class="register-link">
+                New to IIITDM Portal? <a href="#">Create Account</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

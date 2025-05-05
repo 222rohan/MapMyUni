@@ -1,0 +1,336 @@
+ /* Global Styles */
+ * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    display: flex;
+    background-color: #f5f7fa;
+    color: #333;
+    height: 100vh;
+}
+
+/* Sidebar Navigation - Following Gestalt Law of Proximity */
+.sidebar {
+    width: 240px;
+    background-color: #1a3a5f;
+    color: #fff;
+    padding: 20px 0;
+    height: 100vh;
+    position: fixed;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar-header {
+    padding: 0 20px 20px;
+    border-bottom: 1px solid #2c4c6e;
+}
+
+.college-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 5px;
+}
+
+.college-logo img {
+    width: 40px;
+    height: 40px;
+    background-color: #fff;
+    border-radius: 50%;
+}
+
+.college-name {
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.sidebar-menu {
+    padding: 20px;
+    list-style: none;
+}
+
+.sidebar-menu li {
+    margin-bottom: 15px;
+}
+
+.sidebar-menu a {
+    color: #e0e0e0;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    padding: 8px 10px;
+    border-radius: 5px;
+    transition: all 0.2s;
+}
+
+.sidebar-menu a:hover, .sidebar-menu a.active {
+    background-color: #2c4c6e;
+    color: #fff;
+}
+
+.sidebar-menu a span {
+    margin-left: 10px;
+}
+
+/* Main Content Area - Law of Common Region */
+.main-content {
+    flex-grow: 1;
+    margin-left: 240px;
+    padding: 20px;
+    overflow-y: auto;
+}
+
+/* Top Navigation - Following Fitts' Law with easy targets */
+.top-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #fff;
+    padding: 10px 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    margin-bottom: 20px;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.user-avatar {
+    width: 35px;
+    height: 35px;
+    background-color: #1a3a5f;
+    border-radius: 50%;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+}
+
+.user-name {
+    font-weight: 500;
+}
+
+/* Welcome Section - Visual Hierarchy */
+.welcome-section {
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 25px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.welcome-heading {
+    font-size: 24px;
+    margin-bottom: 10px;
+    color: #1a3a5f;
+}
+
+.welcome-subheading {
+    font-size: 16px;
+    color: #666;
+    margin-bottom: 20px;
+}
+
+/* Campus Map Section - Focus of attention */
+.campus-map-section {
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    margin-bottom: 20px;
+}
+
+.campus-map-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.campus-map-title {
+    font-size: 18px;
+    font-weight: 600;
+    color: #1a3a5f;
+}
+
+.view-full-map {
+    color: #1a3a5f;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.campus-map-container {
+    width: 100%;
+    height: 800px;
+    border-radius: 8px;
+    overflow: hidden;
+    position: relative;
+}
+
+.campus-map {
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+.map-overlay {
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+    background-color: #fff;
+    border-radius: 5px;
+    padding: 8px 12px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    font-size: 13px;
+    color: #555;
+}
+
+.quick-links {
+    display: flex;
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.quick-link {
+    background-color: #eaf2ff;
+    color: #1a3a5f;
+    padding: 8px 15px;
+    border-radius: 5px;
+    font-size: 14px;
+    font-weight: 500;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+/* Announcements - Inverted Pyramid */
+.announcements {
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 25px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.announcements h2 {
+    font-size: 20px;
+    margin-bottom: 20px;
+    color: #1a3a5f;
+}
+
+.announcement-item {
+    border-left: 3px solid #1a3a5f;
+    padding-left: 15px;
+    margin-bottom: 15px;
+}
+
+.announcement-item:last-child {
+    margin-bottom: 0;
+}
+
+.announcement-date {
+    font-size: 12px;
+    color: #999;
+    margin-bottom: 5px;
+}
+
+.announcement-title {
+    font-size: 16px;
+    font-weight: 500;
+    margin-bottom: 5px;
+}
+
+.announcement-desc {
+    font-size: 14px;
+    color: #666;
+}
+
+/* Login Overlay - Simplicity first (Hick's Law) */
+.login-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.login-container {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    width: 400px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+}
+
+.login-header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.login-header h2 {
+    font-size: 24px;
+    color: #1a3a5f;
+    margin-bottom: 10px;
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 14px;
+    color: #555;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.login-btn {
+    background-color: #1a3a5f;
+    color: #fff;
+    border: none;
+    padding: 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 10px;
+}
+
+.register-link {
+    text-align: center;
+    margin-top: 15px;
+    font-size: 14px;
+    color: #666;
+}
+
+.register-link a {
+    color: #1a3a5f;
+    text-decoration: none;
+    font-weight: 500;
+}
