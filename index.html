@@ -109,13 +109,14 @@
     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
     <script>
         const map = L.map('leaflet-map').setView([12.8399, 80.1365], 17);
+        let lastHighlighted = null;
 
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             maxZoom: 20,
             attribution: '© OpenStreetMap'
         }).addTo(map);
 
-        function showModal(title, content) {
+        function showModal(title, content, latlng = null) {
             const modal = document.createElement('div');
             modal.className = 'map-modal';
             modal.innerHTML = `
@@ -125,6 +126,14 @@
                     <button onclick="this.parentElement.parentElement.remove()">Close</button>
                 </div>`;
             document.body.appendChild(modal);
+
+            // If latlng is provided, position near pin
+            if (latlng) {
+                const point = map.latLngToContainerPoint(latlng);
+                modal.style.position = 'absolute';
+                modal.style.left = `${point.x + 20}px`;
+                modal.style.top = `${point.y - 100}px`;
+            }
         }
 
         const markerMap = {};
@@ -138,20 +147,52 @@
             { name: 'Sports Complex', lat: 12.836449905878164, lng: 80.13781335604857, content: 'Badminton, TT, Carrom' },
         ];
 
+        const defaultIcon = L.icon({
+            iconUrl: 'https://unpkg.com/leaflet@1.7.1/dist/images/marker-icon.png',
+            iconSize: [25, 41],
+            iconAnchor: [12, 41]
+        });
+
+        const highlightIcon = L.icon({
+            iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-red.png',
+            iconSize: [25, 41],
+            iconAnchor: [12, 41]
+        });
+
         points.forEach(p => {
-            const marker = L.marker([p.lat, p.lng]).addTo(map).on('click', () => showModal(p.name, p.content));
+            const marker = L.marker([p.lat, p.lng], { icon: defaultIcon })
+                .addTo(map)
+                .on('click', () => {
+                    highlightMarker(marker, p.name);
+                    showModal(p.name, p.content, [p.lat, p.lng]);
+                });
             markerMap[p.name] = marker;
         });
 
+        function highlightMarker(marker, name) {
+            if (lastHighlighted && lastHighlighted !== marker) {
+                lastHighlighted.setIcon(defaultIcon);
+            }
+            marker.setIcon(highlightIcon);
+            lastHighlighted = marker;
+        }
+
         function gotoMarker(name) {
             const marker = markerMap[name];
-            if (marker) {
-                map.setView(marker.getLatLng(), 18, { animate: true });
-                showModal(name, points.find(p => p.name === name)?.content || "");
+            const data = points.find(p => p.name === name);
+
+            if (marker && data) {
+                map.flyTo([data.lat, data.lng], 18, { animate: true });
+
+                setTimeout(() => {
+                    highlightMarker(marker, name);
+                    showModal(name, data.content, [data.lat, data.lng]);
+                }, 500);
             } else {
-                alert(`Marker for "${name}" not found.`);
+                alert(`Marker for "${name}" not found`);
             }
         }
+
     </script>
 </body>
 </html>
