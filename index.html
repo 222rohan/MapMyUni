@@ -18,7 +18,7 @@
         </div>
         <ul class="sidebar-menu">
             <li><a href="#" class="active">Home</a></li>
-            <li><a href="#">Community Forum</a></li>
+            <li><a href="community.html">Community Forum</a></li>
             <li><a href="#">Campus Map</a></li>
             <li><a href="#">Chatbot Assistant</a></li>
             <li><a href="#">Log Out</a></li>
@@ -45,7 +45,7 @@
         <!-- Campus Map Section -->
         <div class="campus-map-section">
             <div class="campus-map-header">
-                <div class="campus-map-title">IIITDM Campus Map</div>
+                <div class="campus-map-title"> <h2>  IIITDM Campus Map</h2></div>
                 <a href="#" class="view-full-map">View Full Map →</a>
             </div>
 
@@ -68,26 +68,44 @@
         </div>
 
         <!-- Announcements Section -->
-        <div class="announcements">
-            <h2>Latest Announcements</h2>
-            <div class="announcement-item">
-                <div class="announcement-date">May 4, 2025</div>
-                <div class="announcement-title">Summer Internship Fair - May 15th</div>
-                <div class="announcement-desc">Join us at the Main Auditorium for the annual Summer Internship Fair. Companies from all over the country will be present.</div>
-            </div>
-            <div class="announcement-item">
-                <div class="announcement-date">May 3, 2025</div>
-                <div class="announcement-title">Updated Exam Schedule Released</div>
-                <div class="announcement-desc">The final examination schedule for this semester has been released. Please check your student dashboard.</div>
-            </div>
-            <div class="announcement-item">
-                <div class="announcement-date">May 1, 2025</div>
-                <div class="announcement-title">Library Hours Extended</div>
-                <div class="announcement-desc">Library hours have been extended until midnight during the exam period starting next week.</div>
-            </div>
-        </div>
-    </div>
-
+        <section class="announcements">
+            <h2 class="announcements-heading">Latest Announcements</h2>
+        
+            <article class="announcement-item">
+                <header>
+                    <time class="announcement-date" datetime="2025-05-04">May 4, 2025</time>
+                    <h3 class="announcement-title">Summer Internship Fair – May 15</h3>
+                </header>
+                <p class="announcement-desc">
+                    Attend the annual Summer Internship Fair in the Main Auditorium. Leading companies from across the country will be present to offer internship opportunities.
+                </p>
+                <button class="read-more-btn">Read More →</button>
+            </article>
+        
+            <article class="announcement-item">
+                <header>
+                    <time class="announcement-date" datetime="2025-05-03">May 3, 2025</time>
+                    <h3 class="announcement-title">Updated Exam Schedule Released</h3>
+                </header>
+                <p class="announcement-desc">
+                    The final examination schedule for the current semester is now available. Please review it on your student dashboard to stay informed.
+                </p>
+                <button class="read-more-btn">Read More →</button>
+            </article>
+        
+            <article class="announcement-item">
+                <header>
+                    <time class="announcement-date" datetime="2025-05-01">May 1, 2025</time>
+                    <h3 class="announcement-title">Extended Library Hours</h3>
+                </header>
+                <p class="announcement-desc">
+                    In preparation for exams, the library will remain open until midnight starting next week. Make the most of the extended study hours.
+                </p>
+                <button class="read-more-btn">Read More →</button>
+            </article>
+        </section>
+        
+        
     <!-- Login Overlay -->
     <div class="login-overlay" style="display: none;">
         <div class="login-container">
